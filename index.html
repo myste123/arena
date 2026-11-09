@@ -1,0 +1,10 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Balon Arenası</title>
+<style>body{background:#0b0f1e;color:#fff;font-family:Segoe UI,Arial,sans-serif;display:grid;place-items:center;height:100vh;margin:0;text-align:center}</style></head>
+<body><p id="m">🎈 Balon Arenası yükleniyor…</p>
+<script>
+// Kalici musteri linki: guncel sunucu adresine yonlendirir (adres degisirse otomatik guncellenir)
+function git(){fetch('adres.json?t='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(d=>{
+ const q=new URLSearchParams(location.search);q.set('geri',location.href.split('?')[0]);
+ location.replace(d.adres.replace(/\/$/,'')+'/?'+q.toString())}).catch(()=>{document.getElementById('m').textContent='Sunucuya ulaşılamadı, tekrar deneniyor…';setTimeout(git,15000)})}
+git();
+</script></body></html>
